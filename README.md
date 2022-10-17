@@ -10,7 +10,7 @@
 ### Create SSL certificate
 
 ```
-cd docker/file/ssl
+cd docker/ssl
 mkcert "*.local.host"
 ```
 
