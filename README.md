@@ -4,7 +4,7 @@
 /etc/hosts
 
 ```
-127.0.0.1 dev-home-standalone.dsign.gift
+127.0.0.1 dev-standalone-base.local.host
 ```
 
 ### Create SSL certificate
