@@ -12,7 +12,6 @@ RUN apt-get update -y \
     libpq-dev
 
 RUN docker-php-ext-configure gd \
-	&& docker-php-ext-install pdo pdo_mysql \
     && docker-php-ext-install gd \
     && apt-get install -y libonig-dev
 

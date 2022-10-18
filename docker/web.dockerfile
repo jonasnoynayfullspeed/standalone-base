@@ -6,5 +6,5 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN mkdir /etc/nginx/ssl
-ADD docker/ssl/_wildcard.local.pem /etc/nginx/ssl/fullchain.pem
-ADD docker/ssl/_wildcard.local-key.pem /etc/nginx/ssl/privkey.pem
+ADD docker/ssl/_wildcard.local.host.pem /etc/nginx/ssl/fullchain.pem
+ADD docker/ssl/_wildcard.local.host-key.pem /etc/nginx/ssl/privkey.pem
