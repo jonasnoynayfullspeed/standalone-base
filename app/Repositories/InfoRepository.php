@@ -4,9 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Info;
 use App\Services\FirestoreService;
+use App\Repositories\RepositoryInterface;
 use Google\Cloud\Firestore\DocumentReference;
 
-class InfoRepository
+class InfoRepository implements RepositoryInterface
 {
     /**
      * @var Info $info
@@ -25,7 +26,7 @@ class InfoRepository
     }
 
     /**
-     * Get Info By Id
+     * Get info
      *
      * @return Info | boolean
      */
@@ -47,5 +48,38 @@ class InfoRepository
 
         //Return model class with data
         return $this->info;
+    }
+
+    /**
+     * Delete info
+     *
+     * @param Info $info
+     * @return void
+     */
+    public function delete(Info $info)
+    {
+        //
+    }
+
+    /**
+     * Update info
+     *
+     * @param Info $info
+     * @return void
+     */
+    public function update(Info $info)
+    {
+        //
+    }
+
+    /**
+     * Create info
+     *
+     * @param Info $info
+     * @return void
+     */
+    public function create(Info $info)
+    {
+        //
     }
 }
