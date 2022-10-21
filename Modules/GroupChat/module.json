@@ -1,0 +1,11 @@
+{
+    "name": "GroupChat",
+    "alias": "groupchat",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GroupChat\\Providers\\GroupChatServiceProvider"
+    ],
+    "files": []
+}
