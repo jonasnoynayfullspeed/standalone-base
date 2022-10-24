@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\Home\Http\Controllers;
 
 use App\Models\Info;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use App\Repositories\InfoRepository;
 
 class InfoController extends Controller
