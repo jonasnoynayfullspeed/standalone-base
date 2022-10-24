@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="standaloneBase" default="build">
+
+    <property name="outputDir" value="./storage/phing/" override="false"/>
+
+    <target name="php-cs-fixer">
+        <echo msg="Apply our coding style." />
+        <exec command="vendor/bin/php-cs-fixer fix -v" logoutput="true" />
+    </target>
+
+    <target name="parallel-lint">
+        <echo msg="Check PHP Syntax Error" />
+        <exec command="vendor/bin/parallel-lint
+            --exclude vendor
+            --exclude Modules/Chat/vendor
+            --exclude Modules/GroupChat/vendor
+            --exclude Modules/Home/vendor
+            --exclude Modules/Photo/vendor ." 
+             logoutput="true" />
+    </target>
+
+    <target name="ide-helper">
+        <echo msg="Update IDE helper" />
+        <exec command="php artisan ide-helper:generate" logoutput="true" />
+        <exec command="php artisan ide-helper:meta" logoutput="true" />
+    </target>
+
+    <target name="optimize">
+        <echo msg="Optimize" />
+        <exec command="php artisan optimize" />
+    </target>
+
+    <target name="build" depends="ide-helper , php-cs-fixer, parallel-lint , optimize" />
+</project>

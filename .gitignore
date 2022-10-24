@@ -4,6 +4,10 @@
 /public/storage
 /storage/*.key
 /vendor
+/Modules/Chat/vendor
+/Modules/GroupChat/vendor
+/Modules/Home/vendor
+/Modules/Photo/vendor
 .env
 .env.backup
 .phpunit.result.cache
@@ -16,5 +20,10 @@ yarn-error.log
 /.vscode
 /docker/ssl/*.pem
 .DS_Store
+_ide_helper.php
+_ide_helper_models.php
+
+.phpstorm.meta.php
+.php-cs-fixer.cache
 
 !.gitkeep
