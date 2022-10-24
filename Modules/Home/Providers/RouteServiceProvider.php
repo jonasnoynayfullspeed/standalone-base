@@ -2,6 +2,7 @@
 
 namespace Modules\Home\Providers;
 
+use Modules\Home\Models\Info;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -24,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Route::bind('info', function ($value) {
+            return new Info($value);
+        });
     }
 
     /**

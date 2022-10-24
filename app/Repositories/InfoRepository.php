@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Info;
+use App\Models\InfoBase as Info;
 use App\Services\FirestoreService;
 use App\Repositories\RepositoryInterface;
 use Google\Cloud\Firestore\DocumentReference;

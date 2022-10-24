@@ -2,10 +2,10 @@
 
 namespace Modules\Home\Http\Controllers;
 
-use App\Models\Info;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Repositories\InfoRepository;
+use Modules\Home\Models\Info;
 
 class InfoController extends Controller
 {

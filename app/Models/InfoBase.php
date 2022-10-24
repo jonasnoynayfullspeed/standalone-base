@@ -2,19 +2,48 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\ModelInterface;
 
-class Info extends Model
+class InfoBase implements ModelInterface
 {
-    public $id = '';
-    public $collectionName = 'info';
-    public $title, $priority, $date, $link, $type, $createdAt, $updatedAt, $detail, $scope, $isDraft;
+    protected $id = '';
+    protected $collectionName = 'info';
+
+    public  $title, 
+            $priority,
+            $date,
+            $link,
+            $type,
+            $createdAt,
+            $updatedAt, 
+            $detail,
+            $scope,
+            $isDraft;
 
     public function __construct($id = '')
     {
         $this->id = $id;
     }
 
+    /**
+     * Get model id
+     *
+     * @return String
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get collection name
+     *
+     * @return String
+     */
+    public function getCollectionName()
+    {
+        return $this->collectionName;
+    }
 
     /**
      * Set Array $data to model

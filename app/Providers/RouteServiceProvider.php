@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Cache\RateLimiting\Limit;

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\ModelInterface;
 use Google\Cloud\Firestore\FirestoreClient;
 use Google\Cloud\Firestore\DocumentSnapshot;
 
@@ -31,13 +31,13 @@ class FirestoreService
      * @param String $documentId
      * @return Array | boolean
      */
-    public function getDocumentById(Model $model)
+    public function getDocumentById(ModelInterface $model)
     {
         //Get first level collection
-        $collectionData = $this->fireStore->collection($model->collectionName);
+        $collectionData = $this->fireStore->collection($model->getCollectionName());
         
         //Get document from collection via ID
-        $snapshot = $collectionData->document($model->id)->snapshot();
+        $snapshot = $collectionData->document($model->getId())->snapshot();
         
         //Check if snapshot exists
         if(! $snapshot->exists()) {

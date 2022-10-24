@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Info;
+use App\Models\InfoBase as Info;
 
 interface RepositoryInterface
 {
