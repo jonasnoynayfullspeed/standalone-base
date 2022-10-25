@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\ModelInterface;
+use App\Models\BaseModel;
 
-class InfoBase implements ModelInterface
+class InfoBase extends BaseModel
 {
-    protected $id = '';
+    protected $id;
     protected $collectionName = 'info';
 
     public  $title, 
@@ -19,31 +19,6 @@ class InfoBase implements ModelInterface
             $detail,
             $scope,
             $isDraft;
-
-    public function __construct($id = '')
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * Get model id
-     *
-     * @return String
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get collection name
-     *
-     * @return String
-     */
-    public function getCollectionName()
-    {
-        return $this->collectionName;
-    }
 
     /**
      * Set Array $data to model

@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\InfoBase as Info;
+use App\Models\BaseModel;
 
 interface RepositoryInterface
 {
-    public function create(Info $info);
-    public function find(Info $info);
-    public function update(Info $info);
-    public function delete(Info $info);
+    public function create (BaseModel $model);
+    public function find   (BaseModel $model);
+    public function update (BaseModel $model);
+    public function delete (BaseModel $model);
 }
