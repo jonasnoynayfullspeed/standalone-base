@@ -21,3 +21,12 @@ mkcert "*.local.host"
 ```
 docker-compose up -d
 ```
+
+### Before git push
+- update ide helper
+- code format
+- check php syntax error
+- php artisan optimize
+```
+./vendor/bin/phing build
+```

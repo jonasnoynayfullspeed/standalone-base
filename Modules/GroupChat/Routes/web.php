@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('groupchat')->group(function() {
+Route::prefix('groupchat')->group(function () {
     Route::get('/', 'GroupChatController@index');
 });

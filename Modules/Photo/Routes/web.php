@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('photo')->group(function() {
+Route::prefix('photo')->group(function () {
     Route::get('/', 'PhotoController@index');
 });
