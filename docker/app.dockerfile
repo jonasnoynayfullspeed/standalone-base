@@ -9,7 +9,12 @@ RUN apt-get update -y \
     libzip-dev \
     libicu-dev \
     git \
-    libpq-dev
+    libpq-dev \
+    vim
+
+RUN pecl install grpc
+ADD docker/php/php.ini /usr/local/etc/php/php.ini
+RUN echo "extension=grpc.so" > /usr/local/etc/php/php.ini
 
 RUN docker-php-ext-configure gd \
     && docker-php-ext-install gd \
