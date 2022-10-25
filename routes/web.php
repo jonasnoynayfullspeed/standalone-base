@@ -16,5 +16,3 @@ use App\Http\Controllers\InfoController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('info/{info}', [InfoController::class, 'index']);

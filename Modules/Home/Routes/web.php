@@ -11,10 +11,8 @@
 |
 */
 
-use Modules\Home\Http\Controllers\InfoController;
-
 Route::prefix('home')->group(function() {
     Route::get('/', 'HomeController@index');
-    Route::get('/info/{info}', 'InfoController@index');
+    Route::get('info/{info}', 'InfoController@index');
 });
 

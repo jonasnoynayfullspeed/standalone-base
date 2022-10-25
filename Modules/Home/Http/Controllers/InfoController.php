@@ -3,9 +3,9 @@
 namespace Modules\Home\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Modules\Home\Models\Info;
 use Illuminate\Routing\Controller;
 use App\Repositories\InfoRepository;
-use Modules\Home\Models\Info;
 
 class InfoController extends Controller
 {
