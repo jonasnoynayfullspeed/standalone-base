@@ -14,8 +14,8 @@
     @endif
     <form action="/login" method="post">
         @csrf
-        <input type="text" name="username" value="admin" id="username">
-        <input type="password" name="password" value="pass" id="password">
+        <input type="text" name="username" id="username">
+        <input type="password" name="password" id="password">
 
         <input type="submit" value="Login" />
     </form>
