@@ -34,4 +34,6 @@ pre-commit executions:
 - `php 8.1` must be installed in host machine. \
 `brew install php@8.1`
 - run `npm install`
+- run `npx husky install`
 - prepare `.env.testing` file
+

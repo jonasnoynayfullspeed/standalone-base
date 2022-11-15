@@ -2,42 +2,39 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
-
 class InfoBase extends BaseModel
 {
     protected $id;
     protected $collectionName = 'info';
 
-    public  $title, 
-            $priority,
-            $date,
-            $link,
-            $type,
-            $createdAt,
-            $updatedAt, 
-            $detail,
-            $scope,
-            $isDraft;
+    public $title;
+    public $priority;
+    public $date;
+    public $link;
+    public $type;
+    public $createdAt;
+    public $updatedAt;
+    public $detail;
+    public $scope;
+    public $isDraft;
 
     /**
-     * Set Array $data to model
+     * Set Array $data to model.
      *
-     * @param Array $data
      * @return self
      */
-    public function setArrayDataToModel( Array $data)
+    public function setArrayDataToModel(array $data)
     {
-        $this->title = $data['title'];
-        $this->priority = $data['priority'];
-        $this->date = $data['date'];
-        $this->link = $data['link'];
-        $this->type = $data['type'];
+        $this->title     = $data['title'];
+        $this->priority  = $data['priority'];
+        $this->date      = $data['date'];
+        $this->link      = $data['link'];
+        $this->type      = $data['type'];
         $this->createdAt = $data['createdAt'];
         $this->updatedAt = $data['updatedAt'];
-        $this->detail = $data['detail'];
-        $this->scope = $data['scope'];
-        $this->isDraft = $data['isDraft'];
+        $this->detail    = $data['detail'];
+        $this->scope     = $data['scope'];
+        $this->isDraft   = $data['isDraft'];
 
         return $this;
     }

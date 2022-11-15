@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-./vendor/bin/phing build
+./vendor/bin/phing build && git add .
 
 php artisan config:clear
 ./vendor/bin/phpunit

@@ -2,9 +2,9 @@
 
 namespace Modules\Home\Providers;
 
-use Modules\Home\Models\Info;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Modules\Home\Models\Info;
 
 class RouteServiceProvider extends ServiceProvider
 {
