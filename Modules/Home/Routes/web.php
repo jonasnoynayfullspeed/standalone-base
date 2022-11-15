@@ -11,8 +11,7 @@
 |
 */
 
-Route::prefix('home')->group(function() {
+Route::prefix('home')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('info/{info}', 'InfoController@index');
 });
-

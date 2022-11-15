@@ -4,21 +4,18 @@ namespace App\Repositories;
 
 use App\Models\BaseModel as Info;
 use App\Services\FirestoreService;
-use App\Repositories\RepositoryInterface;
-use Google\Cloud\Firestore\DocumentReference;
 
 class InfoRepository implements RepositoryInterface
 {
     /**
-     * @var Info $info
+     * @var Info
      */
     protected $info;
 
     /**
-     * @var FirestoreService $fireStoreService
+     * @var FirestoreService
      */
     protected $fireStoreService;
-
 
     public function __construct(FirestoreService $fireStoreService)
     {
@@ -26,60 +23,54 @@ class InfoRepository implements RepositoryInterface
     }
 
     /**
-     * Get info
+     * Get info.
      *
-     * @return Info | boolean
+     * @return Info|bool
      */
     public function find(Info $info)
     {
-        //Set info to class
+        // Set info to class
         $this->info = $info;
 
-        //Get data from firestore
+        // Get data from firestore
         $resultData = $this->fireStoreService->getDocumentById($this->info);
-        
-        //Return false if no data found
-        if(! $resultData) {
+
+        // Return false if no data found
+        if (! $resultData) {
             return false;
         }
 
-        //Set raw data to model data
+        // Set raw data to model data
         $this->info = $this->info->setArrayDataToModel($resultData);
 
-        //Return model class with data
+        // Return model class with data
         return $this->info;
     }
 
     /**
-     * Delete info
+     * Delete info.
      *
-     * @param Info $info
      * @return void
      */
     public function delete(Info $info)
     {
-        //
     }
 
     /**
-     * Update info
+     * Update info.
      *
-     * @param Info $info
      * @return void
      */
     public function update(Info $info)
     {
-        //
     }
 
     /**
-     * Create info
+     * Create info.
      *
-     * @param Info $info
      * @return void
      */
     public function create(Info $info)
     {
-        //
     }
 }

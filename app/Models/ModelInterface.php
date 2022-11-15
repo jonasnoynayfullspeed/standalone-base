@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-interface ModelInterface {
-
+interface ModelInterface
+{
     public function getId();
+
     public function getCollectionName();
-    public function setArrayDataToModel(Array $data);
+
+    public function setArrayDataToModel(array $data);
 }

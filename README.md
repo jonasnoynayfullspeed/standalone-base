@@ -22,11 +22,18 @@ mkcert "*.local.host"
 docker-compose up -d
 ```
 
-### Before git push
+### Git Hooks
+pre-commit executions: 
 - update ide helper
 - code format
 - check php syntax error
 - php artisan optimize
-```
-./vendor/bin/phing build
-```
+- unit test
+
+### Notes
+- `php 8.1` must be installed in host machine. \
+`brew install php@8.1`
+- run `npm install`
+- run `npx husky install`
+- prepare `.env.testing` file
+

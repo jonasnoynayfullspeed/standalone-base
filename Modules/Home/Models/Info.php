@@ -6,5 +6,4 @@ use App\Models\InfoBase;
 
 final class Info extends InfoBase
 {
-    //
 }

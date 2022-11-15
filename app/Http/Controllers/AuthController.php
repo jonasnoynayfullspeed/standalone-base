@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\AuthRepository;
-use App\Services\AuthService;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
     private $authRepository;
+
     public function __construct(AuthRepository $authRepository)
     {
         $this->authRepository = $authRepository;
@@ -26,8 +26,9 @@ class AuthController extends Controller
         if ($this->authRepository->authenticate($username, $password)) {
             return redirect('/');
         }
+
         return redirect('signIn')->withErrors([
-            'error' => 'Failed to login!'
+            'error' => 'Failed to login!',
         ]);
     }
 
