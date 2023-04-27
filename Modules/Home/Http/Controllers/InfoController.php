@@ -2,10 +2,10 @@
 
 namespace Modules\Home\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Modules\Home\Models\Info;
-use Illuminate\Routing\Controller;
 use App\Repositories\InfoRepository;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Modules\Home\Models\Info;
 
 class InfoController extends Controller
 {
@@ -14,28 +14,24 @@ class InfoController extends Controller
      */
     protected $infoRepository;
 
-
     public function __construct(InfoRepository $infoRepository)
     {
         $this->infoRepository = $infoRepository;
     }
 
     /**
-     * Find info from repository
+     * Find info from repository.
      *
-     * @param Request $request
-     * @param Info $info
-     * 
      * @return void
      */
     public function index(Request $request, Info $info)
     {
-       $result = $this->infoRepository->find($info);
+        $result = $this->infoRepository->find($info);
 
-       if(! $result) {
-        abort(404);
-       }
+        if (! $result) {
+            abort(404);
+        }
 
-       echo $result->title;
+        echo $result->title;
     }
 }

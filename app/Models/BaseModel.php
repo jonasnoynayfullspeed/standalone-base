@@ -2,20 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\ModelInterface;
-
 class BaseModel implements ModelInterface
 {
-
     public function __construct($id = '')
     {
         $this->id = $id;
     }
 
     /**
-     * Get model id
+     * Get model id.
      *
-     * @return String
+     * @return string
      */
     public function getId()
     {
@@ -23,9 +20,9 @@ class BaseModel implements ModelInterface
     }
 
     /**
-     * Get collection name
+     * Get collection name.
      *
-     * @return String
+     * @return string
      */
     public function getCollectionName()
     {
@@ -33,12 +30,11 @@ class BaseModel implements ModelInterface
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
-     * @param Array $data
      * @return void
      */
-    public function setArrayDataToModel(Array $data)
+    public function setArrayDataToModel(array $data)
     {
         return $this;
     }

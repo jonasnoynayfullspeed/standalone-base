@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth.manage:admin')->group(function () {
     Route::get('/', function () {
-        return '<h4><a href="' . route('auth.logout') . '">LOGOUT</a></h4>';
+        return '<h4><a href="'.route('auth.logout').'">LOGOUT</a></h4>';
     });
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
