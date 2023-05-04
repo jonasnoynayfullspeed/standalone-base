@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/home', function (Request $request) {
-    return $request->user();
+Route::prefix('home')->group(function () {
+    Route::get('/getOnAirLive', 'LiveController@getOnAirLive');
 });

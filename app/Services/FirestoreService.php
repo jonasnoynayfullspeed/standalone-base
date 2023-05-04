@@ -12,6 +12,7 @@ class FirestoreService
      * @var FirestoreClient
      */
     public $fireStore;
+    private $query;
 
     public function __construct()
     {
@@ -26,7 +27,6 @@ class FirestoreService
 
     /**
      * Find document by id.
-     *
      * @param string $documentId
      *
      * @return array|bool

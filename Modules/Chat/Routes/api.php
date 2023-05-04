@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/chat', function (Request $request) {
-    return $request->user();
+Route::prefix('chat')->group(function () {
+    Route::get('/hello', function () {
+        return [
+            'message' => 'Hello world!',
+        ];
+    });
 });
