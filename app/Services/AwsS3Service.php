@@ -1,9 +1,12 @@
 <?php
+
+namespace App\Services;
+
 use Aws\S3\S3Client;
 use Aws\Credentials\CredentialProvider;
 use Aws\S3\Exception\S3Exception;
 
-class AwsS3
+class AwsS3Service
 {
     private $s3Client;
     private $bucket;

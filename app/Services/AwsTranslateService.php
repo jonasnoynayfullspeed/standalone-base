@@ -1,8 +1,11 @@
 <?php
+
+namespace App\Services;
+
 use Aws\Translate\TranslateClient;
 use Aws\Credentials\CredentialProvider;
 
-class AwsTranslate
+class AwsTranslateService
 {
     private $translateClient;
     private $parameter = [];

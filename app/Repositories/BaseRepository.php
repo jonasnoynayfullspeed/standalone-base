@@ -2,8 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Models\ModelInterface;
+use App\Models\DataCollection;
+use Google\Cloud\Core\Timestamp;
 use App\Services\FirestoreService;
+use Google\Cloud\Firestore\DocumentReference;
+use Google\Cloud\Firestore\CollectionReference;
 
 class BaseRepository implements RepositoryInterface
 {
@@ -11,39 +14,53 @@ class BaseRepository implements RepositoryInterface
      * @var FirestoreService
      */
     protected $db;
-    protected $model;
+    protected $query;
+    protected $collection;
 
     public function __construct(FirestoreService $fireStoreService)
     {
         $this->db = $fireStoreService->fireStore;
     }
 
-
     /**
      * Get from collection
      *
-     * @param ModelInterface $model
+     * @param DataCollection $model
      * 
      * @return self
      */
-    public function from(ModelInterface $model)
+    public function from(DataCollection $collection)
     {
-        $this->model = $model;
+        $this->collection = $collection;
+        $db = $this->db;
+        $parent = $collection->getParent();
+        
+        while($parent != null) {
+            $db = $db
+            ->collection($parent->getCollectionName())
+            ->document($parent->getId());
 
-        $this->query = $this->db->collection($model->getCollectionName());
+            $parent = $parent->getParent();
+        }
+
+        $this->query = $db->collection($collection->getCollectionName());
+
+        if($collection->getId()) {
+            $this->query = $this->query->document($collection->getId());
+        }
 
         return $this;
     }
 
     /**
-     * Get model.
+     * Get collection
      *
-     * @return ModelInterface|bool
+     * @return DataCollection|bool
      */
-    public function find(ModelInterface $model)
+    public function find(DataCollection $collection)
     {
         // Get data from firestore
-        $resultData = $this->db->getDocumentById($model);
+        $resultData = $this->db->getDocumentById($collection);
 
         // Return false if no data found
         if (! $resultData) {
@@ -51,7 +68,7 @@ class BaseRepository implements RepositoryInterface
         }
 
         // Set raw data to model data
-        return $model->setArrayDataToModel($resultData);
+        return $collection->setToModel($resultData);
     }
 
     /**
@@ -81,21 +98,53 @@ class BaseRepository implements RepositoryInterface
 
         $documents = $this->query->documents();
 
-       foreach($documents->rows() as $document)
-       {
-            if($document->exists())
-            {
-                $resultData = $this->snapshotToArray($document);
+       foreach($documents->rows() as $document) {
+            if($document->exists()) {
+                $this->query = $document->reference();
+                $fireStoreService = new FirestoreService();
+                $resultData = $fireStoreService->snapshotToArray($document);
             }
        }
 
-       if($resultData == false)
-       {
+       if($resultData == false) {
             return false;
        }
 
-       $this->model->setArrayDataToModel($resultData);
-       
-       return $this->model;
+       return $this->collection->setToModel($resultData);
+    }
+
+    /**
+     * Set new data array to referrence
+     *
+     * @param array $newData
+     * @return bool
+     */
+    public function set(array $newData)
+    {
+        if($this->query instanceof DocumentReference) {
+            $this->query->set($newData, ['merge' => true]);
+            return true;
+            
+        }else if($this->query instanceof CollectionReference){
+            $this->query->newDocument()->set($newData);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get timestamp for firestore
+     *
+     * @param string $dateString
+     * @return Timestamp
+     */
+    public function getTimestamp(string $dateString = null)
+    {
+        if ($dateString) {
+            return new Timestamp(new \DateTime($dateString));
+        }
+
+        return new Timestamp(new \DateTime());
     }
 }

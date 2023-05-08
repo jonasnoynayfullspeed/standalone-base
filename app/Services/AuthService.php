@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Log;
 use Illuminate\Http\Request;
 
 class AuthService
@@ -27,7 +28,7 @@ class AuthService
 
             return $session && $session['time'] > time();
         } catch (\Throwable $error) {
-            \Log::error(__METHOD__, $error->getMessage());
+            Log::error(__METHOD__, $error->getMessage());
         }
 
         return false;
@@ -51,8 +52,7 @@ class AuthService
                 return true;
             }
         } catch (\Throwable $error) {
-            \Log::error(__METHOD__, $error->getMessage());
-            dd($error->getMessage());
+            Log::error(__METHOD__, $error->getMessage());
         }
 
         return false;
@@ -63,7 +63,7 @@ class AuthService
         try {
             return session()->remove(self::SESSION_AUTH);
         } catch (\Throwable $error) {
-            \Log::error(__METHOD__, $error->getMessage());
+            Log::error(__METHOD__, $error->getMessage());
         }
 
         return false;

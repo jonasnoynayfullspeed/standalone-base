@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\ModelInterface;
+
 class BaseModel implements ModelInterface
 {
     public function __construct($id = '')
@@ -36,6 +38,13 @@ class BaseModel implements ModelInterface
      */
     public function setArrayDataToModel(array $data)
     {
+        return $this;
+    }
+
+    public function setParent(ModelInterface $model)
+    {
+        $tthis->parent = $model;
+
         return $this;
     }
 }

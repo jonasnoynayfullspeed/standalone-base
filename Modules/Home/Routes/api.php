@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::prefix('home')->group(function () {
-    Route::get('/getOnAirLive', 'LiveController@getOnAirLive');
+    Route::middleware('auth.token')->group(function() {
+        //
+    });
+
+    Route::post('getOnAirLive', 'LiveController@getOnAirLive');
+    Route::post('createLive', 'LiveController@createLive');
+    Route::post('stopLive', 'LiveController@stopLive');
+    Route::post('useTicket', 'TicketController@useTicket');
 });

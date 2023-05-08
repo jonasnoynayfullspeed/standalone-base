@@ -4,7 +4,7 @@ use Log;
 use Aws\MediaConvert\MediaConvertClient;
 use Aws\Credentials\CredentialProvider;
 
-class AwsMediaConvert
+class AwsMediaConvertService
 {
     private $client = null;
     private $parameterFile = null;
